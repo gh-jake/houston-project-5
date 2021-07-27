@@ -7,8 +7,10 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Shows from './components/Shows';
 import Show from './components/Show';
+import Lists from './components/Lists'
+import List from './components/List'
 
-function App() {
+const App = () => {
   const [loggedIn, setLoggedIn] = useState(false)
   const [user, setUser] = useState({})
   const [errors, setErrors] = useState("")
@@ -54,11 +56,14 @@ function App() {
     <div className="App">
       <NavBar user={user} loggedIn={loggedIn} logOutUser={logOutUser} />
       <Switch>
-        <Route exact path='/' component={Home} />
+        {/* <Route exact path='/' component={Home} /> */}
+        <Route exact path='/' render={routerProps => <Home {...routerProps} loggedIn={loggedIn} />} />
         <Route exact path='/signup' render={routerProps => <Signup {...routerProps} errors={errors} signUpUser={startSession} />} />
         <Route exact path='/login' render={routerProps => <Login {...routerProps} logInUser={startSession} />} />
         <Route exact path='/shows' render={routerProps => <Shows {...routerProps} user={user} loggedIn={loggedIn} />} />
+        <Route exact path='/lists' render={routerProps => <Lists {...routerProps} user={user} loggedIn={loggedIn} />} />
         <Route path='/shows/:id' component={Show} />
+        <Route path='/lists/:id' component={List}/>
       </Switch>
     </div>
   );

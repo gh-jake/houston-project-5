@@ -1,65 +1,64 @@
 import React, { useState, useEffect } from 'react';
-import ShowForm from './ShowForm';
-import ShowLink from './ShowLink';
+import ListForm from './ListForm';
+import ListLink from './ListLink';
 
-const Shows = () => {
-    const [shows, setShows] = useState([])
+const Lists = () => {
+    const [lists, setLists] = useState([])
     const [error, setError] = useState('')
     const [formFlag, setFormFlag] = useState(false)
 
     useEffect(() => {
-        fetch('/shows')
+        fetch('/lists')
         .then(res => res.json())
         .then(data => {
             if (data.error) {
                 setError(data.error)
             }
             else {
-                setShows(data)
+                setLists(data)
             }
         })
     }, [])
 
-    const addShow = (show) => {
-        console.log("addShow parameter", show)
-        fetch('/shows', {
+    const addList = (list) => {
+        fetch('/lists', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(show)
+            body: JSON.stringify(list)
         })
         .then(res => res.json())
         .then(data => {
-            setShows([...shows, data])
+            setLists([...lists, data])
         })
         toggleFormFlag()
     }
 
-    const deleteShow = (id) => {
-        fetch(`/shows/${id}`, {
+    const deleteList = (id) => {
+        fetch(`/lists/${id}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json'
             }
         })
         .then(() => {
-            const filteredShows = shows.filter(s => s.id != id)
-            setShows(filteredShows)
+            const filteredLists = lists.filter(l => l.id != id)
+            setLists(filteredLists)
         })
     }
 
-    const editShow = (updatedShow) => {
-        fetch(`/shows/${updatedShow.id}`, {
+    const editList = (updatedList) => {
+        fetch(`/lists/${updatedList.id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(updatedShow)
+            body: JSON.stringify(updatedList)
         })
         .then(() => {
-            const updatedShows = shows.map(s => s.id === updatedShow.id ? updatedShow : s)
-            setShows(updatedShows)
+            const updatedLists = lists.map(l => l.id === updatedList.id ? updatedList : l)
+            setLists(updatedLists)
         })
     }
 
@@ -67,17 +66,17 @@ const Shows = () => {
         formFlag ? setFormFlag(false) : setFormFlag(true)
     }
 
-    const showList = shows.map(s => <ShowLink key={s.id} show={s} deleteShow={deleteShow} editShow={editShow} />)
+    const listsList = lists.map(l => <ListLink key={l.id} list={l} deleteList={deleteList} editShow={editList} />)
 
     if (error === '') {
         return (
             <div>
                 <ul>
-                    {showList}
+                    {listsList}
                     {formFlag ? 
-                        <ShowForm addShow={addShow} />
+                        <ListForm addList={addList} />
                         :
-                        <button onClick={toggleFormFlag}>New Show</button>
+                        <button onClick={toggleFormFlag}>New List</button>
                     }
                 </ul>
             </div>
@@ -91,4 +90,4 @@ const Shows = () => {
     
 }
 
-export default Shows
+export default Lists

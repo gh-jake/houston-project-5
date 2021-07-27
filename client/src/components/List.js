@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 
-const Show = (props) => {
-    const [show, setShow] = useState({})
+const List = (props) => {
+    const [list, setList] = useState({})
     const [errors, setErrors] = useState("")
     
     useEffect(() => {
-        fetch(`/shows/${props.match.params.id}`)
+        fetch(`/lists/${props.match.params.id}`)
         .then(res => res.json())
         .then(data => {
             console.log(data)
@@ -14,7 +14,7 @@ const Show = (props) => {
                     setErrors(data.errors)
                 }
                 else {
-                    setShow(data)
+                    setList(data)
                 }
             }  
             else {
@@ -28,13 +28,7 @@ const Show = (props) => {
     if (errors === "") {
         return (
             <div>
-                <h2>{show.title}</h2>
-                <p>{show.startYear}</p>
-                -
-                <p>{show.endYear}</p>
-                <h4>{show.seasons}</h4>
-                <h4>{show.category}</h4> 
-                <h4>{show.description}</h4>           
+                <h2>{list.title}</h2>          
             </div>
         )
     }
@@ -45,4 +39,4 @@ const Show = (props) => {
     }
 }
 
-export default Show
+export default List

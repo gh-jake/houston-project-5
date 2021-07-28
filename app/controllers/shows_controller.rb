@@ -20,6 +20,7 @@ class ShowsController < ApplicationController
     def create
         user = User.find_by(id: session[:user_id])
         show = user.shows.create(show_params)
+        # byebug
         render json: show
     end
 
@@ -40,7 +41,7 @@ class ShowsController < ApplicationController
     private
 
     def show_params
-        params.permit(:title, :start_year, :end_year, :seasons, :category, :description)
+        params.permit(:title, :years, :rated, :seasons, :genres, :plot, :imdb_rating, :watched, :imdb_id)
     end
 
     def authorize

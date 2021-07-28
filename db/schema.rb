@@ -10,16 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_23_191726) do
+ActiveRecord::Schema.define(version: 2021_07_28_010840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "lists", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
 
   create_table "ratings", force: :cascade do |t|
     t.integer "stars"
@@ -28,14 +22,23 @@ ActiveRecord::Schema.define(version: 2021_07_23_191726) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "text"
+    t.integer "show_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "shows", force: :cascade do |t|
     t.string "title"
-    t.integer "start_year"
-    t.integer "end_year"
-    t.integer "seasons"
-    t.string "category"
-    t.string "description"
-    t.integer "list_id"
+    t.string "years"
+    t.string "rated"
+    t.string "seasons"
+    t.string "genres"
+    t.string "plot"
+    t.string "imdb_rating"
+    t.boolean "watched"
+    t.string "imdb_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

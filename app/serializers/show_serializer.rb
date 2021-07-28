@@ -1,3 +1,3 @@
 class ShowSerializer < ActiveModel::Serializer
-  attributes :id, :title, :start_year, :end_year, :seasons, :category, :description, :list_id, :user_id
+  attributes :id, :title, :years, :rated, :seasons, :genres, :plot, :imdb_rating, :watched, :user_id
 end

@@ -1,6 +1,6 @@
 class Show < ApplicationRecord
-    validates :title, :start_year, :end_year, :seasons, :category, presence: true
+    validates :imdb_id, uniqueness: true
     belongs_to :user
-    belongs_to :list
     has_one :rating
+    has_one :review
 end

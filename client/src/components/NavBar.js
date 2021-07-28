@@ -14,13 +14,13 @@ const NavBar = (props) => {
             <div>
                 <h1>Hello {props.user.name}</h1>
                 <br/>
-                <button onClick={props.logOutUser}>Log Out</button>
-                <Link to="/lists">
-                    <button>My Lists</button>
+                <Link to="/search">
+                    <button>Search</button>
                 </Link>
                 <Link to="/shows">
                     <button>My Shows</button>
                 </Link>
+                <button onClick={props.logOutUser}>Log Out</button>
                 {/* {formFlag ? 
                     <ShowForm addShow={addShow}/>
                     :

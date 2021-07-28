@@ -20,21 +20,21 @@ const Shows = () => {
         })
     }, [])
 
-    const addShow = (show) => {
-        console.log("addShow parameter", show)
-        fetch('/shows', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(show)
-        })
-        .then(res => res.json())
-        .then(data => {
-            setShows([...shows, data])
-        })
-        toggleFormFlag()
-    }
+    // const addShow = (show) => {
+    //     console.log("addShow parameter", show)
+    //     fetch('/shows', {
+    //         method: "POST",
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(show)
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         setShows([...shows, data])
+    //     })
+    //     toggleFormFlag()
+    // }
 
     const deleteShow = (id) => {
         fetch(`/shows/${id}`, {
@@ -74,11 +74,11 @@ const Shows = () => {
             <div>
                 <ul>
                     {showList}
-                    {formFlag ? 
+                    {/* {formFlag ? 
                         <ShowForm addShow={addShow} />
                         :
                         <button onClick={toggleFormFlag}>New Show</button>
-                    }
+                    } */}
                 </ul>
             </div>
         )

@@ -37,7 +37,6 @@ const ShowForm = ({addShow}) => {
                 value={startYear}
                 onChange={(e) => {setStartYear(e.target.value)}}
             />
-            {/* <br/> */}
             <label>End year</label>
             <input 
                 type="number"

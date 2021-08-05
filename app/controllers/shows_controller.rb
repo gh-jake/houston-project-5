@@ -21,7 +21,11 @@ class ShowsController < ApplicationController
         user = User.find_by(id: session[:user_id])
         show = user.shows.create(show_params)
         # byebug
-        render json: show
+        if show.valid?
+            render json: show
+        else
+            render json: { errors: show.errors.full_messages }, status: :unprocessable_entity
+        end
     end
 
     def update

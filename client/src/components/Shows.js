@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import ShowForm from './ShowForm';
 import ShowLink from './ShowLink';
 
 const Shows = () => {
     const [shows, setShows] = useState([])
     const [error, setError] = useState('')
-    const [formFlag, setFormFlag] = useState(false)
+    const [message, setMessage] = useState('')
 
     useEffect(() => {
         fetch('/shows')
@@ -14,27 +13,14 @@ const Shows = () => {
             if (data.error) {
                 setError(data.error)
             }
+            else if (data.length === 0) {
+                setMessage("You have no saved shows.")
+            }
             else {
                 setShows(data)
             }
         })
     }, [])
-
-    // const addShow = (show) => {
-    //     console.log("addShow parameter", show)
-    //     fetch('/shows', {
-    //         method: "POST",
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(show)
-    //     })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         setShows([...shows, data])
-    //     })
-    //     toggleFormFlag()
-    // }
 
     const deleteShow = (id) => {
         fetch(`/shows/${id}`, {
@@ -63,22 +49,14 @@ const Shows = () => {
         })
     }
 
-    const toggleFormFlag = () => {
-        formFlag ? setFormFlag(false) : setFormFlag(true)
-    }
-
     const showList = shows.map(s => <ShowLink key={s.id} show={s} deleteShow={deleteShow} editShow={editShow} />)
 
     if (error === '') {
         return (
             <div>
                 <ul>
+                    {message}
                     {showList}
-                    {/* {formFlag ? 
-                        <ShowForm addShow={addShow} />
-                        :
-                        <button onClick={toggleFormFlag}>New Show</button>
-                    } */}
                 </ul>
             </div>
         )

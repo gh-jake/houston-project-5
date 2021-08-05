@@ -1,31 +1,35 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom';
-// import ShowForm from './ShowForm'
+
+// const link = {
+//     width: '100px', 
+//     padding: '15px 32px',
+//     margin: '0 6px 6px',
+//     background: 'white',
+//     textDecoration: 'none',
+//     color: 'black'
+//   }
 
 const NavBar = (props) => {
-    // const [formFlag, setFormFlag] = useState(false)
-
-    // const toggleFormFlag = () => {
-    //     formFlag ? setFormFlag(false) : setFormFlag(true)
-    // }
     
     if(props.loggedIn) {
         return (
             <div>
-                <h1>Hello {props.user.name}</h1>
+                <h1>{props.user.name}'s Show List</h1>
                 <br/>
-                <Link to="/search">
-                    <button>Search</button>
-                </Link>
-                <Link to="/shows">
-                    <button>My Shows</button>
-                </Link>
-                <button onClick={props.logOutUser}>Log Out</button>
-                {/* {formFlag ? 
-                    <ShowForm addShow={addShow}/>
-                    :
-                    <button onClick={toggleFormFlag}>Add Show</button>
-                } */}
+                <NavLink 
+                    to="/search"
+                >
+                    <button className="nav-button">Search</button>
+                </NavLink>
+                <NavLink 
+                    to="/shows"
+                >
+                    <button className="nav-button">My Shows</button>
+                </NavLink>
+                {/* <br/><br/><br/> */}
+                <button className="nav-button" onClick={props.logOutUser}>Log Out</button>
+                <br/><br/>
             </div>
         )
     }
@@ -33,12 +37,16 @@ const NavBar = (props) => {
         return (
             <div>
                 <br/>
-                <Link to="/signup">
-                    <button>Sign Up</button>
-                </Link>
-                <Link to="/login">
-                    <button>Log In</button>
-                </Link>
+                <NavLink 
+                    to="/signup"
+                >
+                    <button className="nav-button">Sign Up</button>
+                </NavLink>
+                <NavLink 
+                    to="/login"
+                >
+                    <button className="nav-button">Log In</button>
+                </NavLink>
             </div>
         )
     }

@@ -6,7 +6,7 @@ const Login = ({logInUser}) => {
     const [errors, setErrorsList] = useState([])
 
     const handleSubmit = (event) => {
-        event.preventDefault() //tries to send a post request
+        event.preventDefault() 
         fetch("/login", {
             method: "POST",
             headers: {

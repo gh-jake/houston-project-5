@@ -60,7 +60,7 @@ const App = () => {
         <Route exact path='/signup' render={routerProps => <Signup {...routerProps} errors={errors} signUpUser={startSession} />} />
         <Route exact path='/login' render={routerProps => <Login {...routerProps} logInUser={startSession} />} />
         <Route exact path='/shows' render={routerProps => <Shows {...routerProps} user={user} loggedIn={loggedIn} />} />
-        <Route path='/search' render={() => <Search/>}/>
+        <Route path='/search' render={routerProps => <Search {...routerProps} loggedIn={loggedIn}/>}/>
         <Route path='/shows/:id' component={Show} />
       </Switch>
     </div>

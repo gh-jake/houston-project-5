@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+/* .nav-button {
+  width: '100px', 
+  padding: '15px 32px',
+    margin: '0 6px 6px',
+    background: 'white',
+    textDecoration: 'none',
+    color: 'black'
+} */
+
+/* button {
+  background: transparent;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+} */
+
+hr {
+  border-top: 1px dashed;
+}
+
+.title {
+  text-decoration: none;
+}

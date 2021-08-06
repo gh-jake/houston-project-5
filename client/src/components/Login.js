@@ -31,6 +31,7 @@ const Login = ({logInUser}) => {
 
     return (
         <div>
+            <h2>Welcome back! Log in to get started.</h2>
             <br/>
             <form onSubmit={handleSubmit}>
                 <label>Name</label>

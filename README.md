@@ -1,9 +1,15 @@
-# Project Template: React/Rails API
+# Final Project - TVRoom
+Jake Houston
+Full-Time Online Software Engineering 03-15
+8/6/21
 
 ## Description
 
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Heroku.
+Welcome to TVRoom! This application allows you to search for a television show, add it to your list, rate and review it, and keep track of what you've watched and haven't watched. You can also delete shows from your list, and delete individual ratings and reviews. Adding a rating or review will automatically mark a show as Watched. A more complete description of the setup is available below, but here's an overview:
+
+After configuring your environment and navigating into this directory, run $ rails s in one terminal window and $ npm start --prefix client in another. The app will open in your browser at http://localhost:4000/. 
+
+Be sure to use a unique username and strong password. Happy watching!
 
 ## Requirements
 

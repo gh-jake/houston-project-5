@@ -37,6 +37,7 @@ const Signup = ({ signUpUser }) => {
 
     return (
         <div>
+            <h2>Welcometo TVRoom! Please create an account.</h2>
             <br/>
             <form onSubmit={handleSubmit}>
                 <label>Name</label>

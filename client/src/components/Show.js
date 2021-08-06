@@ -175,7 +175,12 @@ const Show = (props) => {
     }
 
     const configureTitle = (watched) => {
-        if (watched) { return <h2>✔</h2> }
+        if (watched) { 
+            return <h2>✔ {show.title}</h2> 
+        }
+        else {
+            return <h2>{show.title}</h2>
+        }
     }
 
     if (errors === "") {
@@ -183,10 +188,9 @@ const Show = (props) => {
             <div>
                 <hr/>
                 {configureTitle(show.watched)}
-                <h2>{show.title}</h2>
                 <h3>{show.years}</h3>
                 <h4>Rated {show.rated}</h4>
-                <h4>IMDb rating: {show.imdb_rating}</h4>
+                <h4>IMDb rating: {show.imdb_rating} ⭐</h4>
                 <h4>{configureSeasons(show.seasons)}</h4>
                 <h4>{show.genres}</h4> 
                 <h4>{show.plot}</h4>  
@@ -197,7 +201,7 @@ const Show = (props) => {
     }
     else {
         return (
-            <h3>{errors}</h3>
+            <h2>{errors}</h2>
         )
     }
 }

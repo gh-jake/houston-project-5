@@ -15,7 +15,7 @@ const NavBar = (props) => {
     if(props.loggedIn) {
         return (
             <div>
-                <h1>{props.user.name}'s Show List</h1>
+                <h1>{props.user.name}'s TVRoom</h1>
                 <br/>
                 <NavLink 
                     to="/search"

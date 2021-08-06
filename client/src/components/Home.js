@@ -4,7 +4,7 @@ const Home = ({loggedIn}) => {
     if(loggedIn) {
         return (
             <div>
-                <h2>Welcome</h2>
+                <h3>To add a show, select "Search." To see your saved shows, select "My Shows."</h3>
             </div>
             
         )

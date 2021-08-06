@@ -62,6 +62,7 @@ const Search = ({loggedIn}) => {
                 </form>
                 <ShowResult result={results} addShow={addShow}/>
                 {errors}
+                <h4>Powered by the Open Movie Database (OMDb API)</h4>
             </div>
         )
     }
